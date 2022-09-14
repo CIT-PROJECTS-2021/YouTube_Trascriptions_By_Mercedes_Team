@@ -19,3 +19,11 @@ for example :  https://www.youtube.com/watch?v=9bZkp7q19f0
 ```python
 The output will be saved in a text file named <name.txt>
 ```
+### Authors 
+- [Ali](Ali) 
+- [Francis](Francis )
+- [Noah](Noah)
+- [jerry](jerry)
+- [Andrew](Andrew)
+- [Diphan](Diphan)
+- [charles](charles)
