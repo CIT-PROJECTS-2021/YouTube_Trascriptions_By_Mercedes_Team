@@ -15,7 +15,10 @@ import pytube
     
 
 # arguments to be passed in the command line 
-
+def get_parser():
+    parser = argparse.ArgumentParser(description='Youtube Transcript Summarizer')
+    parser.add_argument('-i', '--input', type=str, help='Youtube video link')
+    return parser
 
 
 # get the transcript of the video
