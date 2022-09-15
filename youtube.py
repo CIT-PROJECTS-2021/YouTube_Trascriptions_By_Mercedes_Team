@@ -38,7 +38,7 @@ def get_video_id():
         sys.exit(1)
     else:
         video = pytube.YouTube(args.i)
-        print(args.i)
+        # print(args.i)
         video_id = video.video_id
         return video_id
 
