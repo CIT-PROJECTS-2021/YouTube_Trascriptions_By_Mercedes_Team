@@ -4,23 +4,26 @@ youtube transcript summarizer
 """
 import sys
 import argparse
-from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound , NoTranscriptAvailable, \
-    TranscriptsDisabled ,VideoUnavailable , TooManyRequests
-    
+from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound, NoTranscriptAvailable, \
+    TranscriptsDisabled, VideoUnavailable, TooManyRequests
+
 from youtube_transcript_api.formatters import TextFormatter
-import pytube     
-import sumy 
+import pytube
+import sumy
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.summarizers.lex_rank import LexRankSummarizer
 from sumy.nlp.tokenizers import Tokenizer
 
-# Usage function 
 
-    
+# Usage function
+def usage():
+    print("Usage:filename -i <youtube video link>")
 
-# arguments to be passed in the command line 
+
+# arguments to be passed in the command line
 def get_parser():
-    parser = argparse.ArgumentParser(description='Youtube Transcript Summarizer')
+    parser = argparse.ArgumentParser(
+        description='Youtube Transcript Summarizer')
     parser.add_argument('-i', '--input', type=str, help='Youtube video link')
     return parser
 
@@ -58,7 +61,8 @@ def get_transcript():
     except Exception as e:
         print(e)
         return f"Unknown Error Occurred. Please try again after some time."
-    
+
+
 def main():
     transcript = get_transcript()
     # get the text from the transcript
@@ -74,11 +78,12 @@ def main():
         with open("summary.txt", "w") as f:
             f.write(str(sentence))
     print("Thank you for using our application , your summary is saved in summary.txt")
-    
+
+
 if __name__ == "__main__":
     main()
-    
-# https://www.youtube.com/watch?v=a5xs8_YBmPo 
+
+# https://www.youtube.com/watch?v=a5xs8_YBmPo
     #  https://www.youtube.com/watch?v=__oCUzwL7i0
     #  https://www.youtube.com/watch?v=J_SQoOjv8aM
-    # https://www.youtube.com/watch?v=WcIcVapfqXw 
+    # https://www.youtube.com/watch?v=WcIcVapfqXw
