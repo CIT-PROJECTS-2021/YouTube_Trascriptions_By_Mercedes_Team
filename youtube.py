@@ -9,6 +9,10 @@ from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound , NoT
     
 from youtube_trancript_api.formatters import TextFormatter
 import pytube     
+import sumy 
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.summarizers.lex_rank import LexRankSummarizer
+from sumy.nlp.tokenizers import Tokenizer
 
 # Usage function 
 
@@ -23,6 +27,7 @@ def get_parser():
 
 # get the transcript of the video
 def get_video_id():
+    print("Getting video id from youtube link ........")
     parser = get_parser()
     args = parser.parse_args()
     if args is None:
@@ -35,6 +40,7 @@ def get_video_id():
 
 
 def get_transcript():
+    print("Getting transcript...")
     video_id = get_video_id()
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id)
@@ -52,3 +58,24 @@ def get_transcript():
     except Exception as e:
         print(e)
         return f"Unknown Error Occurred. Please try again after some time."
+    
+def main():
+    transcript = get_transcript()
+    # get the text from the transcript
+    formatter = TextFormatter()
+    text = formatter.format_transcript(transcript).strip()
+    # summarize the text using sumy library algorithm used is LexRankSummarizer
+    summarize = LexRankSummarizer()
+    parser = PlaintextParser.from_string(text, Tokenizer("english"))
+    summary = summarize(parser.document, 3)
+    print("Summarising text...")
+    for sentence in summary:
+        # write the summary to a file
+        with open("summary.txt", "w") as f:
+            f.write(str(sentence))
+    print("Thank you for using our application , your summary is saved in summary.txt")
+    
+if __name__ == "__main__":
+    main()
+    
+    
