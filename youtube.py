@@ -21,7 +21,7 @@ from sumy.nlp.tokenizers import Tokenizer
 # arguments to be passed in the command line 
 def get_parser():
     parser = argparse.ArgumentParser(description='Youtube Transcript Summarizer')
-    parser.add_argument('-i', '--input', type=str, help='Youtube video link')
+    parser.add_argument('-i' , type=str, help='Enter Youtube video link')
     return parser
 
 
@@ -35,6 +35,7 @@ def get_video_id():
         sys.exit(1)
     else:
         video = pytube.YouTube(args.i)
+        print(args.i)
         video_id = video.video_id
         return video_id
 
