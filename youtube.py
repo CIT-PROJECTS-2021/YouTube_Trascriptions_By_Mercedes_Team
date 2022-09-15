@@ -79,7 +79,3 @@ def main():
 if __name__ == "__main__":
     main()
     
-# https://www.youtube.com/watch?v=a5xs8_YBmPo 
-    #  https://www.youtube.com/watch?v=__oCUzwL7i0
-    #  https://www.youtube.com/watch?v=J_SQoOjv8aM
-    # https://www.youtube.com/watch?v=WcIcVapfqXw 
