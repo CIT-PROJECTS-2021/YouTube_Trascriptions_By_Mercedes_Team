@@ -16,14 +16,15 @@ from sumy.nlp.tokenizers import Tokenizer
 
 
 # Usage function
-def usage():
+def Usage():
     print("Usage:filename -i <youtube video link>")
 
 
 # arguments to be passed in the command line
 def get_parser():
-    parser = argparse.ArgumentParser(description='Youtube Transcript Summarizer')
-    parser.add_argument('-i' , type=str, help='Enter Youtube video link')
+    parser = argparse.ArgumentParser(
+        description='Youtube Transcript Summarizer')
+    parser.add_argument('-i', type=str, help='Enter Youtube video link')
     return parser
 
 
